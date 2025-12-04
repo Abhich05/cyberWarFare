@@ -39,11 +39,12 @@ const signup = asyncHandler(async (req, res) => {
   });
 
   // Generate token and set cookie
-  generateTokenAndSetCookie(res, user._id);
+  const token = generateTokenAndSetCookie(res, user._id);
 
   res.status(201).json({
     success: true,
     message: 'User registered successfully',
+    token, // Include token for Authorization header fallback
     user: {
       id: user._id,
       name: user.name,
@@ -80,11 +81,12 @@ const login = asyncHandler(async (req, res) => {
   }
 
   // Generate token and set cookie
-  generateTokenAndSetCookie(res, user._id);
+  const token = generateTokenAndSetCookie(res, user._id);
 
   res.status(200).json({
     success: true,
     message: 'Login successful',
+    token, // Include token for Authorization header fallback
     user: {
       id: user._id,
       name: user.name,

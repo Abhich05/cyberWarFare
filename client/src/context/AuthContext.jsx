@@ -4,6 +4,23 @@ import toast from 'react-hot-toast';
 
 const AuthContext = createContext(null);
 
+// Token storage helpers
+const TOKEN_KEY = 'authToken';
+
+const saveToken = (token) => {
+  if (token) {
+    localStorage.setItem(TOKEN_KEY, token);
+  }
+};
+
+const getToken = () => {
+  return localStorage.getItem(TOKEN_KEY);
+};
+
+const removeToken = () => {
+  localStorage.removeItem(TOKEN_KEY);
+};
+
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
@@ -33,6 +50,7 @@ export const AuthProvider = ({ children }) => {
       // User is not authenticated
       setUser(null);
       setIsAuthenticated(false);
+      removeToken(); // Clear invalid token
     } finally {
       setLoading(false);
     }
@@ -42,6 +60,10 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await authAPI.signup({ name, email, password });
       if (response.success) {
+        // Save token for Authorization header fallback
+        if (response.token) {
+          saveToken(response.token);
+        }
         setUser(response.user);
         setIsAuthenticated(true);
         toast.success('Account created successfully!');
@@ -57,6 +79,10 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await authAPI.login({ email, password });
       if (response.success) {
+        // Save token for Authorization header fallback
+        if (response.token) {
+          saveToken(response.token);
+        }
         setUser(response.user);
         setIsAuthenticated(true);
         toast.success('Welcome back!');
@@ -71,13 +97,14 @@ export const AuthProvider = ({ children }) => {
   const logout = useCallback(async () => {
     try {
       await authAPI.logout();
-      setUser(null);
-      setIsAuthenticated(false);
-      toast.success('Logged out successfully');
     } catch (error) {
-      // Even if logout fails on server, clear local state
+      // Ignore logout API errors
+    } finally {
+      // Always clear local state
       setUser(null);
       setIsAuthenticated(false);
+      removeToken();
+      toast.success('Logged out successfully');
     }
   }, []);
 

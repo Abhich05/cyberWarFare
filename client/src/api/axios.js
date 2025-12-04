@@ -4,20 +4,27 @@ import axios from 'axios';
 const API_URL = import.meta.env.VITE_API_URL || 
   (import.meta.env.PROD ? 'https://cyberwarfare.onrender.com/api' : '/api');
 
+// Token key for localStorage
+const TOKEN_KEY = 'authToken';
+
 // Create axios instance with default config
 const api = axios.create({
   baseURL: API_URL,
   headers: {
     'Content-Type': 'application/json',
   },
-  withCredentials: true, // Important for HTTP-only cookies
-  timeout: 10000,
+  withCredentials: true, // Still try cookies
+  timeout: 15000,
 });
 
-// Request interceptor
+// Request interceptor - Add Authorization header
 api.interceptors.request.use(
   (config) => {
-    // You can add custom headers here if needed
+    // Add token from localStorage as Authorization header (fallback for cross-origin)
+    const token = localStorage.getItem(TOKEN_KEY);
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
   },
   (error) => {
