@@ -1,134 +1,93 @@
-# 🎉 Black Friday Course Hub
+# 🛡️ CyberWarFare Labs
 
-A full-stack MERN (MongoDB, Express, React, Node.js) application for a mini course subscription platform with Black Friday promotional deals.
+A full-stack MERN application for a cybersecurity course subscription platform featuring Black Friday promotional deals.
 
-![Black Friday Course Hub](https://via.placeholder.com/1200x600/dc2626/ffffff?text=Black+Friday+Course+Hub)
+![CyberWarFare Labs](https://img.shields.io/badge/CyberWarFare-Labs-red?style=for-the-badge&logo=shield&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js)
+![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=flat-square&logo=mongodb)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-06B6D4?style=flat-square&logo=tailwindcss)
+
+## 🌐 Live Demo
+
+| Service | URL |
+|---------|-----|
+| **Frontend** | [cyber-war-fare.vercel.app](https://cyber-war-fare.vercel.app) |
+| **Backend API** | [cyberwarfare.onrender.com](https://cyberwarfare.onrender.com) |
+
+> ⚠️ **Note**: Backend is hosted on Render's free tier and may take ~30 seconds to wake up on first request.
+
+---
 
 ## 📋 Table of Contents
 
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
 - [Quick Start](#-quick-start)
 - [Environment Variables](#-environment-variables)
 - [API Documentation](#-api-documentation)
-- [Demo Credentials](#-demo-credentials)
-- [Deployment](#-deployment)
-- [Screenshots](#-screenshots)
-- [Future Enhancements](#-future-enhancements)
+- [Project Structure](#-project-structure)
+
+---
 
 ## ✨ Features
 
 ### User Features
-- 🔐 **Authentication**: Secure signup/login with JWT stored in HTTP-only cookies
-- 📚 **Course Browsing**: View all available courses with details
-- 💰 **Subscription**: Subscribe to free courses instantly
-- 🏷️ **Promo Codes**: Apply "BFSALE25" for 50% discount on paid courses
-- 📖 **My Courses**: View all subscribed courses with purchase history
-- 🎨 **Modern UI**: Beautiful dark theme with responsive design
+- 🔐 **Secure Authentication** - JWT with HTTP-only cookies + Authorization header fallback
+- 📚 **Course Catalog** - Browse cybersecurity courses from CyberWarFare Labs
+- 🎥 **Video Previews** - YouTube video integration for course previews
+- 💰 **Instant Subscription** - Subscribe to free courses instantly
+- 🏷️ **Promo Codes** - Apply `BFSALE25` for 50% off paid courses
+- 📖 **My Courses** - Track subscribed courses with purchase history
+- 🍪 **Cookie Consent** - GDPR-compliant cookie notice
+- 🎨 **Premium UI** - Dark theme with animations (Framer Motion)
 
 ### Technical Features
-- ✅ MVC Architecture
-- ✅ JWT Authentication with HTTP-only cookies
-- ✅ Password hashing with bcrypt
-- ✅ Protected API routes
+- ✅ MVC Architecture with clean separation of concerns
+- ✅ Dual auth system (cookies + localStorage fallback)
+- ✅ Password hashing with bcrypt (8+ chars, complexity rules)
+- ✅ Protected API routes with middleware
 - ✅ Form validation (frontend & backend)
-- ✅ Toast notifications
-- ✅ Loading skeletons
-- ✅ Responsive design with Tailwind CSS
-- ✅ Error handling
+- ✅ Toast notifications (react-hot-toast)
+- ✅ Loading skeletons for better UX
+- ✅ Fully responsive design
+- ✅ Error boundaries for graceful failures
+
+---
 
 ## 🛠 Tech Stack
 
-### Backend
-- **Runtime**: Node.js 18+
-- **Framework**: Express.js
-- **Database**: MongoDB with Mongoose ODM
-- **Authentication**: JWT (jsonwebtoken)
-- **Password Hashing**: bcryptjs
-- **Cookie Handling**: cookie-parser
-
 ### Frontend
-- **Framework**: React 18 with Vite
-- **Styling**: Tailwind CSS
-- **Routing**: React Router v6
-- **HTTP Client**: Axios
-- **Icons**: Heroicons
-- **Notifications**: React Hot Toast
-- **State Management**: React Context API
+| Technology | Purpose |
+|------------|---------|
+| React 18 | UI Framework |
+| Vite | Build Tool |
+| Tailwind CSS | Styling |
+| Framer Motion | Animations |
+| React Router v6 | Routing |
+| Axios | HTTP Client |
+| Lucide React | Icons |
+| React Hot Toast | Notifications |
 
-## 📁 Project Structure
+### Backend
+| Technology | Purpose |
+|------------|---------|
+| Node.js 18+ | Runtime |
+| Express.js | Web Framework |
+| MongoDB | Database |
+| Mongoose | ODM |
+| JWT | Authentication |
+| bcryptjs | Password Hashing |
+| cookie-parser | Cookie Handling |
 
-```
-cyberWarFare/
-├── server/                    # Backend
-│   ├── config/
-│   │   ├── db.js             # MongoDB connection
-│   │   └── constants.js      # App constants & mock data
-│   ├── controllers/
-│   │   ├── authController.js
-│   │   ├── courseController.js
-│   │   └── subscriptionController.js
-│   ├── middlewares/
-│   │   ├── authMiddleware.js
-│   │   └── commonMiddleware.js
-│   ├── models/
-│   │   ├── User.js
-│   │   ├── Course.js
-│   │   └── Subscription.js
-│   ├── routes/
-│   │   ├── authRoutes.js
-│   │   ├── courseRoutes.js
-│   │   └── subscriptionRoutes.js
-│   ├── utils/
-│   │   ├── errorHandler.js
-│   │   ├── generateToken.js
-│   │   └── validators.js
-│   ├── scripts/
-│   │   └── seed.js
-│   ├── server.js
-│   ├── package.json
-│   └── .env.example
-│
-├── client/                    # Frontend
-│   ├── public/
-│   │   └── favicon.svg
-│   ├── src/
-│   │   ├── api/
-│   │   │   ├── axios.js
-│   │   │   └── index.js
-│   │   ├── components/
-│   │   │   ├── Navbar.jsx
-│   │   │   ├── CourseCard.jsx
-│   │   │   ├── ProtectedRoute.jsx
-│   │   │   ├── LoadingSpinner.jsx
-│   │   │   ├── Skeleton.jsx
-│   │   │   └── Footer.jsx
-│   │   ├── context/
-│   │   │   └── AuthContext.jsx
-│   │   ├── hooks/
-│   │   │   ├── useForm.js
-│   │   │   └── useFetch.js
-│   │   ├── pages/
-│   │   │   ├── Home.jsx
-│   │   │   ├── Login.jsx
-│   │   │   ├── Signup.jsx
-│   │   │   ├── CourseDetail.jsx
-│   │   │   ├── MyCourses.jsx
-│   │   │   └── NotFound.jsx
-│   │   ├── utils/
-│   │   │   └── helpers.js
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   ├── index.html
-│   ├── package.json
-│   ├── vite.config.js
-│   ├── tailwind.config.js
-│   └── .env.example
-│
-└── README.md
-```
+### Deployment
+| Service | Platform |
+|---------|----------|
+| Frontend | Vercel |
+| Backend | Render |
+| Database | MongoDB Atlas |
+
+---
 
 ## 🚀 Quick Start
 
@@ -139,32 +98,21 @@ cyberWarFare/
 
 ### Installation
 
-1. **Clone the repository**
 ```bash
-git clone <repository-url>
+# Clone the repository
+git clone https://github.com/Abhich05/cyberWarFare.git
 cd cyberWarFare
-```
 
-2. **Setup Backend**
-```bash
+# Setup Backend
 cd server
 npm install
 
-# Create .env file
-cp .env.example .env
-# Edit .env with your MongoDB URI and JWT secret
-```
-
-3. **Setup Frontend**
-```bash
+# Setup Frontend
 cd ../client
 npm install
-
-# Create .env file (optional)
-cp .env.example .env
 ```
 
-4. **Run the Application**
+### Run Locally
 
 **Terminal 1 - Backend:**
 ```bash
@@ -178,231 +126,113 @@ cd client
 npm run dev
 ```
 
-5. **Seed the Database**
+**Seed Database:**
 ```bash
 cd server
 npm run seed
 ```
 
-The application will be available at:
+Access the app at:
 - Frontend: http://localhost:5173
-- Backend API: http://localhost:5000
+- Backend: http://localhost:5000
+
+---
 
 ## 🔧 Environment Variables
 
-### Server (.env)
+### Server (`server/.env`)
 ```env
 NODE_ENV=development
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/bf-course-hub
-JWT_SECRET=your-super-secret-jwt-key-change-in-production
+MONGODB_URI=mongodb://localhost:27017/cyberwarfare
+JWT_SECRET=your-64-char-secret-key
 CLIENT_URL=http://localhost:5173
 ```
 
-### Client (.env)
+### Client (`client/.env`)
 ```env
 VITE_API_URL=/api
 ```
 
+---
+
 ## 📖 API Documentation
 
-### Authentication Endpoints
+### Authentication
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| POST | `/api/auth/signup` | Register user | ❌ |
+| POST | `/api/auth/login` | Login user | ❌ |
+| POST | `/api/auth/logout` | Logout user | ✅ |
+| GET | `/api/auth/verify` | Verify token | ✅ |
 
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| POST | `/api/auth/signup` | Register new user | No |
-| POST | `/api/auth/login` | Login user | No |
-| POST | `/api/auth/logout` | Logout user | Yes |
-| GET | `/api/auth/me` | Get current user | Yes |
-| GET | `/api/auth/verify` | Verify auth status | Yes |
+### Courses
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| GET | `/api/courses` | Get all courses | ❌ |
+| GET | `/api/courses/:id` | Get course by ID | ❌ |
+| POST | `/api/courses/seed` | Seed courses | ❌ |
 
-### Course Endpoints
+### Subscriptions
+| Method | Endpoint | Description | Auth |
+|--------|----------|-------------|------|
+| POST | `/api/subscribe` | Subscribe to course | ✅ |
+| GET | `/api/my-courses` | Get user's courses | ✅ |
+| POST | `/api/validate-promo` | Validate promo code | ❌ |
+| GET | `/api/subscription-status/:id` | Check subscription | ✅ |
 
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| GET | `/api/courses` | Get all courses | No |
-| GET | `/api/courses/:id` | Get course by ID | No |
-| POST | `/api/courses/seed` | Seed mock courses | No |
+### Health Check
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/healthz` | Render health check |
+| GET | `/api/health` | API health status |
 
-### Subscription Endpoints
+---
 
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| POST | `/api/subscribe` | Subscribe to course | Yes |
-| GET | `/api/my-courses` | Get user's courses | Yes |
-| POST | `/api/validate-promo` | Validate promo code | No |
-| GET | `/api/subscription-status/:courseId` | Check subscription | Yes |
+## 📁 Project Structure
 
-### Request/Response Examples
-
-#### Signup
-```bash
-POST /api/auth/signup
-Content-Type: application/json
-
-{
-  "name": "John Doe",
-  "email": "john@example.com",
-  "password": "password123"
-}
-
-# Response (201)
-{
-  "success": true,
-  "message": "User registered successfully",
-  "user": {
-    "id": "...",
-    "name": "John Doe",
-    "email": "john@example.com"
-  }
-}
+```
+cyberWarFare/
+├── client/                    # React Frontend
+│   ├── src/
+│   │   ├── api/              # Axios config & API calls
+│   │   ├── components/       # Reusable components
+│   │   ├── context/          # Auth context
+│   │   ├── hooks/            # Custom hooks
+│   │   ├── pages/            # Page components
+│   │   └── utils/            # Helper functions
+│   ├── vercel.json           # Vercel config
+│   └── package.json
+│
+├── server/                    # Express Backend
+│   ├── config/               # DB & constants
+│   ├── controllers/          # Route handlers
+│   ├── middlewares/          # Auth & CORS
+│   ├── models/               # Mongoose schemas
+│   ├── routes/               # API routes
+│   ├── utils/                # Helpers & validators
+│   ├── render.yaml           # Render config
+│   └── package.json
+│
+└── README.md
 ```
 
-#### Subscribe with Promo
-```bash
-POST /api/subscribe
-Content-Type: application/json
-Cookie: token=<jwt_token>
+---
 
-{
-  "courseId": "...",
-  "promoCode": "BFSALE25"
-}
+## 👤 Demo
 
-# Response (201)
-{
-  "success": true,
-  "message": "Successfully subscribed to course",
-  "subscription": {
-    "id": "...",
-    "course": {...},
-    "pricePaid": 99.99,
-    "originalPrice": 199.99,
-    "discountApplied": 50,
-    "promoCodeUsed": "BFSALE25",
-    "subscribedAt": "2025-12-01T..."
-  }
-}
-```
+**Promo Code**: `BFSALE25` (50% discount on paid courses)
 
-## 👤 Demo Credentials
+Create a new account or use the app to browse courses!
 
-| Email | Password | Description |
-|-------|----------|-------------|
-| demo@example.com | demo123 | Demo user account |
-| test@example.com | test123 | Test user account |
-
-**Promo Code**: `BFSALE25` (50% discount)
-
-## 🌐 Deployment
-
-### Frontend (Vercel)
-
-1. Push code to GitHub
-2. Go to [Vercel](https://vercel.com)
-3. Import your repository
-4. Configure:
-   - Framework: Vite
-   - Root Directory: `client`
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
-5. Add environment variables:
-   ```
-   VITE_API_URL=https://your-backend-url.com/api
-   ```
-6. Deploy!
-
-### Frontend (Netlify)
-
-1. Push code to GitHub
-2. Go to [Netlify](https://netlify.com)
-3. Import repository
-4. Configure:
-   - Base directory: `client`
-   - Build command: `npm run build`
-   - Publish directory: `client/dist`
-5. Add `_redirects` file in `client/public`:
-   ```
-   /*    /index.html   200
-   ```
-6. Add environment variables and deploy
-
-### Backend (Render)
-
-1. Push code to GitHub
-2. Go to [Render](https://render.com)
-3. Create new Web Service
-4. Configure:
-   - Root Directory: `server`
-   - Build Command: `npm install`
-   - Start Command: `npm start`
-5. Add environment variables:
-   ```
-   NODE_ENV=production
-   PORT=5000
-   MONGODB_URI=mongodb+srv://...
-   JWT_SECRET=your-production-secret
-   CLIENT_URL=https://your-frontend-url.com
-   ```
-6. Deploy!
-
-### Backend (Railway)
-
-1. Push code to GitHub
-2. Go to [Railway](https://railway.app)
-3. Create new project from GitHub
-4. Select the server directory
-5. Add environment variables
-6. Deploy!
-
-### Database (MongoDB Atlas)
-
-1. Go to [MongoDB Atlas](https://www.mongodb.com/atlas)
-2. Create free cluster
-3. Create database user
-4. Whitelist IP (0.0.0.0/0 for all IPs)
-5. Get connection string
-6. Update MONGODB_URI in backend
-
-## 📸 Screenshots
-
-### Home Page
-![Home Page](https://via.placeholder.com/800x500/27272a/ffffff?text=Home+Page)
-
-### Course Detail
-![Course Detail](https://via.placeholder.com/800x500/27272a/ffffff?text=Course+Detail)
-
-### My Courses
-![My Courses](https://via.placeholder.com/800x500/27272a/ffffff?text=My+Courses)
-
-### Login/Signup
-![Login](https://via.placeholder.com/800x500/27272a/ffffff?text=Login+Page)
-
-## 🔮 Future Enhancements
-
-- [ ] Real payment integration (Stripe/PayPal)
-- [ ] Course video content hosting
-- [ ] Progress tracking
-- [ ] User profile management
-- [ ] Admin dashboard
-- [ ] Course reviews & ratings
-- [ ] Email notifications
-- [ ] Social authentication (Google, GitHub)
-- [ ] Course search & filters
-- [ ] Wishlist feature
-- [ ] Multiple promo codes support
-- [ ] Course certificates
+---
 
 ## 📄 License
 
-MIT License - feel free to use this project for learning or production.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+MIT License - feel free to use for learning or production.
 
 ---
 
 <p align="center">
-  Made with ❤️ for Black Friday Deals
+  <strong>CyberWarFare Labs</strong> — Premium Cybersecurity Education
 </p>
