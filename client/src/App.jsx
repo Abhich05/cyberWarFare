@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { Toaster } from 'react-hot-toast';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AuthProvider } from './context';
-import { Navbar, Footer, ProtectedRoute, ErrorBoundary } from './components';
+import { Navbar, Footer, ProtectedRoute, ErrorBoundary, CookieConsent } from './components';
 import { Home, Login, Signup, CourseDetail, MyCourses, NotFound } from './pages';
 
 // Page transition wrapper
@@ -97,6 +97,9 @@ function App() {
 
           {/* Footer */}
           <Footer />
+
+          {/* Cookie Consent Banner */}
+          <CookieConsent />
         </div>
         </ErrorBoundary>
       </Router>
