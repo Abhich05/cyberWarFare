@@ -37,7 +37,7 @@ const seedDatabase = async () => {
 
     for (const userData of demoUsers) {
       await User.create(userData);
-      console.log(`✅ Created user: ${userData.email}`);
+      console.log(`Created user: ${userData.email}`);
     }
 
     console.log(`
