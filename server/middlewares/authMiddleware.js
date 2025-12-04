@@ -9,6 +9,10 @@ const { asyncHandler, ApiError } = require('../utils/errorHandler');
 const protect = asyncHandler(async (req, res, next) => {
   let token;
 
+  // Debug: Log cookies received
+  console.log('Cookies received:', req.cookies);
+  console.log('Origin:', req.headers.origin);
+
   // Check for token in HTTP-only cookie first
   if (req.cookies && req.cookies.token) {
     token = req.cookies.token;
