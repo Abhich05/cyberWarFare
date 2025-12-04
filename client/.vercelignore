@@ -1,0 +1,5 @@
+# Vercel ignores these during build
+node_modules
+.env
+.env.local
+.env.production.local

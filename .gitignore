@@ -1,0 +1,122 @@
+# ========================================
+# Node.js & npm
+# ========================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm
+.yarn/cache
+.yarn/unplugged
+.yarn/install-state.gz
+
+# ========================================
+# Environment Variables (CRITICAL - Never commit!)
+# ========================================
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+*.env
+
+# ========================================
+# Build Outputs
+# ========================================
+dist/
+build/
+out/
+.output/
+.next/
+.nuxt/
+
+# ========================================
+# Logs
+# ========================================
+logs/
+*.log
+
+# ========================================
+# Testing & Coverage
+# ========================================
+coverage/
+.nyc_output/
+*.lcov
+.jest/
+
+# ========================================
+# IDE & Editors
+# ========================================
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+*~
+
+# ========================================
+# OS Generated Files
+# ========================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ========================================
+# Temporary Files
+# ========================================
+tmp/
+temp/
+.tmp/
+.temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.local
+
+# ========================================
+# Docker (optional local files)
+# ========================================
+docker-compose.override.yml
+.docker/
+
+# ========================================
+# Miscellaneous
+# ========================================
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+*.pid
+*.seed
+*.pid.lock
+
+# ========================================
+# Secrets & Certificates
+# ========================================
+*.pem
+*.key
+*.crt
+*.p12
+secrets/
+.secrets/
+
+# ========================================
+# MongoDB Data (if running locally)
+# ========================================
+data/db/
+mongodb-data/

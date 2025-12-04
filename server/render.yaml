@@ -1,0 +1,30 @@
+# Render Blueprint - Deploy backend with one click
+# https://render.com/docs/blueprint-spec
+
+services:
+  # Backend API Service
+  - type: web
+    name: cyberwarfare-api
+    runtime: node
+    region: oregon # or singapore, frankfurt, ohio
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false # Set manually in Render dashboard
+      - key: JWT_SECRET
+        generateValue: true # Render auto-generates secure secret
+      - key: CORS_ORIGIN
+        sync: false # Set to your Vercel frontend URL
+      - key: PORT
+        value: 10000
+
+databases:
+  # Optional: Use Render's managed MongoDB (paid) or use MongoDB Atlas free tier
+  # - name: cyberwarfare-db
+  #   databaseName: cyberwarfare
+  #   plan: free # MongoDB not available on free, use Atlas instead
