@@ -24,7 +24,12 @@ if (process.env.NODE_ENV === 'development') {
   app.use(requestLogger);
 }
 
-// Health check endpoint (required for Render)
+// Health check endpoints (required for Render)
+// Render uses /healthz by convention
+app.get('/healthz', (req, res) => {
+  res.status(200).json({ status: 'ok' });
+});
+
 app.get('/api/health', (req, res) => {
   res.status(200).json({
     success: true,

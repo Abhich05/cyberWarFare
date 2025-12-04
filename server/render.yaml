@@ -8,9 +8,10 @@ services:
     runtime: node
     region: oregon # or singapore, frankfurt, ohio
     plan: free
+    rootDir: server
     buildCommand: npm install
     startCommand: npm start
-    healthCheckPath: /api/health
+    healthCheckPath: /healthz
     envVars:
       - key: NODE_ENV
         value: production
