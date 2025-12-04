@@ -23,8 +23,9 @@ const generateTokenAndSetCookie = (res, userId) => {
  */
 const clearTokenCookie = (res) => {
   res.cookie('token', '', {
-    httpOnly: true,
+    ...COOKIE_OPTIONS,
     expires: new Date(0),
+    maxAge: 0,
   });
 };
 

@@ -7,11 +7,11 @@ module.exports = {
   JWT_EXPIRES_IN: '7d',
   COOKIE_EXPIRES_DAYS: 7,
 
-  // Cookie configuration
+  // Cookie configuration for cross-origin (Vercel <-> Render)
   COOKIE_OPTIONS: {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax',
+    secure: process.env.NODE_ENV === 'production', // Must be true for sameSite: 'none'
+    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // 'none' for cross-origin
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   },
 
